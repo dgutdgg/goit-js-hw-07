@@ -1,9 +1,12 @@
 import { galleryItems } from "./gallery-items.js";
+
 const gallery = document.querySelector(".gallery");
 
 for (let item of galleryItems) {
-  const galleryItem = document.createElement("div");
-  galleryItem.classList.add("gallery__item");
+  const galleryItem = document.createElement("li");
+
+  const galleryWrapper = document.createElement("div");
+  galleryWrapper.classList.add("gallery__item");
 
   const galleryLink = document.createElement("a");
   galleryLink.classList.add("gallery__link");
@@ -17,18 +20,12 @@ for (let item of galleryItems) {
   galleryImage.title = item.description;
 
   galleryLink.appendChild(galleryImage);
-  galleryItem.appendChild(galleryLink);
+  galleryWrapper.appendChild(galleryLink);
+  galleryItem.appendChild(galleryWrapper);
   gallery.appendChild(galleryItem);
 }
 
-var images = document.querySelectorAll(".gallery img");
-images.forEach(function (image) {
-  image.addEventListener("click", function (event) {
-    event.preventDefault();
-    const lightbox = new SimpleLightbox(".gallery a", {
-      /* options */
-    });
-  });
-});
+const lightbox = new SimpleLightbox(".gallery a");
 
+console.log(lightbox);
 console.log(galleryItems);
