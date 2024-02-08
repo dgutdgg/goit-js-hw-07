@@ -15,7 +15,11 @@ const galleryHTML = galleryItems
 
 gallery.insertAdjacentHTML("beforeend", galleryHTML);
 
-const lightbox = new SimpleLightbox(".gallery a");
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionSelector: "img",
+  captionsData: "alt",
+  captionDelay: 250,
+});
 
 console.log(lightbox);
 console.log(galleryItems);
